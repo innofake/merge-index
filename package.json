@@ -1,0 +1,28 @@
+{
+  "name": "@innofake/merge-index",
+  "version": "1.0.0",
+  "description": "Merge Index is a tool that allows generating a single js file that re-exports all other js or ts index files in a specified directory.",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "merge-index": "index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "node index.js --dir test --out test/test-export.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+   "dependencies": {
+    "chalk": "^5.0.1",
+    "command-line-args": "^5.2.1"
+  },
+  "devDependencies": {
+    "markdown-styles": "^3.2.0",
+    "renamer": "^4.0.0",
+    "rimraf": "^3.0.2"
+  }
+}

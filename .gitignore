@@ -1,0 +1,30 @@
+# Dependency directories
+node_modules/
+
+# TypeScript v1 declaration files
+typings/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+
+# Output directories
+dist
+docs
+coverage
+.nyc_output
+
+# Test output 
+test-export.js
+
+# General
+.DS_Store

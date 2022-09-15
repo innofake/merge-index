@@ -1,0 +1,1 @@
+export * from './specific-component'; export * from './specific-component-two';
