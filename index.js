@@ -7,10 +7,13 @@ import { execSync } from 'child_process';
 import chalk from 'chalk';
 import commandLineArgs from 'command-line-args';
 
-let { dir, out } = commandLineArgs([
+let { dir, out, excludes } = commandLineArgs([
     { name: 'dir', type: String, defaultValue: 'dist' },
-    { name: 'out', type: String, defaultValue: 'dist/index.js' }
+    { name: 'out', type: String, defaultValue: 'dist/index.js' },
+    { name: 'excludes', type: String, defaultValue: '.git,node_modules' }
 ]);
+
+excludes = excludes?.split(',') || [];
 
 (async () => {
 
@@ -25,6 +28,9 @@ let { dir, out } = commandLineArgs([
     let contents = (await getFiles(dir)).filter(c => path.basename(c).replace('.ts', '').replace('.js', '').toLowerCase() === 'index');
     let exporter = '';
     let relativeTo = path.dirname(path.resolve(out));
+
+    contents = contents.filter(c => !excludes.find(e => c.includes(e)));
+
     for await (const c of contents) {
         exporter += `\r\nexport * from '${c.replace(relativeTo, '.').replaceAll('\\','/').replace('.ts','.js')}';`;
     }
